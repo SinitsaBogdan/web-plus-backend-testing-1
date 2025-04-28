@@ -13,10 +13,16 @@ describe('PostsService', () => {
 
   it('should add a new post', () => {
     service.create({ text: post.text });
-    expect(service.find('2')?.text).toEqual(post.text);  
+    const received = service.find('2');
+    expect(received?.text).toEqual(post.text);  
+    expect(received?.id).toEqual('2');  
   });
 
   it('should find a post', () => {
-    expect(service.find('1')?.text).toEqual(post.text);  
+    const received = service.find('1');
+    expect(received?.text).toEqual(post.text);  
+    expect(received?.id).toEqual('1');  
+
+    expect(service.find('2')).toBeUndefined();  
   });
 });
